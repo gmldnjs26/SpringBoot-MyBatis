@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.example.mapper.CartMapper">
+    
+    <select id="getUserCartList" parameterType="String" resultType="com.example.dto.CartVO">
+        SELECT * FROM CARTS WHERE U_ID = #{u_id}
+    </select>
+    
+    <delete id="deleteCart" parameterType="int"  >
+    	DELETE FROM CARTS WHERE CSEQ = #{cseq}
+    </delete>
+    
+    <insert id="insertCart" parameterType="Map" >
+		INSERT INTO CARTS(U_ID,PSEQ,U_NAME,P_NAME,QUANTITY,P_PRICE,INDATE) 
+		VALUES(#{u_id},#{pseq},#{u_name},#{p_name},#{quantity},#{p_price},SYSDATE())
+    </insert>
+    
+    <select id="getOneCart" parameterType="int" resultType="com.example.dto.CartVO">
+    	SELECT * FROM CARTS WHERE CSEQ = #{cseq}
+    </select>
+</mapper>
+
+

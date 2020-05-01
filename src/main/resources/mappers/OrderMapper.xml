@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.example.mapper.OrderMapper">
+ 
+    <select id="getUserOrderList" parameterType = "String" resultType="com.example.dto.OrderVO">
+        SELECT * FROM ORDERS WHERE U_ID=#{u_id}
+    </select>
+    
+    <insert id="insertOrder" parameterType="map" >
+    	INSERT INTO ORDERS
+    	(U_ID,INDATE,ZIP_NUM,ADDRESS,PHONE,PSEQ,P_NAME,QUANTITY,P_PRICE,U_NAME)
+    	VALUES(#{u_id},SYSDATE(),#{zip_num},#{address},#{phone},#{pseq},#{p_name},#{quantity},#{p_price},#{u_name})
+    </insert>
+ 
+</mapper>
+
+

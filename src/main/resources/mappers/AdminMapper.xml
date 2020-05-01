@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.example.mapper.AdminMapper">
+
+	<select id="getAllUserList" resultType="com.example.dto.UserVO">
+		SELECT * FROM USERS
+	</select>
+	<select id="getSearchUserList" resultType="com.example.dto.UserVO" parameterType="String">
+		SELECT * FROM USERS WHERE U_ID LIKE CONCAT('%',#{key},'%')
+	</select>
+	
+	
+	
+	<select id="getAllProductList" resultType="com.example.dto.ProductVO">
+		SELECT * FROM PRODUCTS
+	</select>
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM PRODUCTS
+	</select>
+	<select id="getProductList" resultType="com.example.dto.ProductVO" parameterType="utils.CriteriaVO">
+		SELECT P.* FROM (SELECT * FROM PRODUCTS ORDER BY PSEQ ASC) AS P
+		LIMIT #{perPageNum} OFFSET #{pageStart}
+	</select>
+	
+	
+	
+	<select id="getAllQnaList" resultType="com.example.dto.QnaVO">
+		SELECT * FROM QNAS
+	</select>
+	
+	<update id="updateQna" parameterType="map">
+		UPDATE QNAS SET Q_STATUS = 1, Q_REPLY = #{q_reply} WHERE QSEQ = #{qseq}
+	</update>
+	
+	
+	
+	<select id="getAllOrderList" resultType="com.example.dto.OrderVO">
+		SELECT * FROM ORDERS
+	</select>
+	
+	<update id="updateOrder" parameterType="int">
+		UPDATE ORDERS SET O_STATUS = 1 WHERE OSEQ = #{oseq}
+	</update>
+</mapper>
+
+

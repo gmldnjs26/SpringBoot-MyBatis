@@ -1,0 +1,37 @@
+<style>
+.pagination {
+    text-align: center;
+    font-family: arial;
+    margin-top: 100px;
+}
+.pagination a {
+    display: inline-block;
+    min-width: 25px;
+    color: #2196F3;
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid #2196F3;
+    text-decoration: none;
+    transition: 0.4s;
+}
+.pagination .page-number:hover {
+    color: #f44336;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.pagination .active {
+    color: #f44336;
+}
+.pagination .prev {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+.pagination .next {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+.pagination .prev:hover,
+.pagination .next:hover {
+    color: #f44336;
+}
+</style>

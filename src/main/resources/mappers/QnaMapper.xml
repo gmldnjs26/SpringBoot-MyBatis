@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.example.mapper.QnaMapper">
+ 
+    <select id="getOneQna" parameterType="int" resultType="com.example.dto.QnaVO">
+    	SELECT * FROM QNAS WHERE QSEQ = #{qseq}
+    </select>
+ 
+ 	<select id="getUserQnaList" parameterType="String" resultType="com.example.dto.QnaVO">
+ 		SELECT * FROM QNAS WHERE U_ID = #{u_id} 	
+ 	</select>
+ 	
+ 	<insert id="insertQna" parameterType="map">
+ 		INSERT INTO QNAS(Q_SUBJECT,Q_CONTENT,U_ID,INDATE)
+ 		VALUES(#{q_subject},#{q_content},#{u_id},SYSDATE())
+ 	</insert>
+</mapper>
+
+
